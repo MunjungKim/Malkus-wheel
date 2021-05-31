@@ -12,11 +12,11 @@ class Malkus:
             
     def malkus(self,a,b,w):
         
-        adot = -K*a + w*b
+        adot = -self.K*a -w*b
         
-        bdot = self.q1-K*b - w*a
+        bdot = self.q1-self.K*b - w*a
     
-        wdot = (-v*w+9.8*r*a*np.pi)/I
+        wdot = (-self.v*w+9.8*self.r*a*np.pi)/self.I
         
         return np.array([adot,bdot,wdot])
     
