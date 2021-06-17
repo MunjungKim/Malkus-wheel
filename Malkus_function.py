@@ -6,13 +6,14 @@ class Malkus:
     def __init__(self, q1,K=0.2,I =0.2 ,v=0.1,r=0.02):
             self.q1 = q1
             self.K = K
-            self.I = I
-            self.v = v
             self.r = r
+            self.v = v
+            self.I = (self.r)**2
+       
             
     def malkus(self,a,b,w):
         
-        adot = -self.K*a -w*b
+        adot = -self.K*a +w*b
         
         bdot = self.q1-self.K*b - w*a
     

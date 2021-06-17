@@ -49,3 +49,20 @@ def RK4_3variable(a0,b0,w0,func_a,h,N):
         w_list[2,i+1] = w_list[2,i] + (1/6)*(m1+ 2*m2 + 2*m3 + m4) 
         
     return w_list,t_list
+
+
+
+def Euler(a0, b0,w0, func_a,h,N):
+    """Solve y’= f(y,t), y(0)=y0, with n steps until t=T."""
+    w_list = np.zeros((3,N+1))
+    t_list = np.zeros(N+1)
+    w_list[0,0] = a0
+    w_list[1,0] = b0
+    w_list[2,0]= w0
+    t_list[0] = 0
+
+    
+    for k in range(N):
+        t_list[k+1] = t_list[k] + h
+        w_list[0,k+1],w_list[1,k+1],w_list[2,k+1] = w_list[:,k] + h*func_a(w_list[0,k],w_list[1,k],w_list[2,k])
+    return w_list,t_list
